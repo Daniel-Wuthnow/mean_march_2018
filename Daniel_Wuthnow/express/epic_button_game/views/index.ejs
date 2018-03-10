@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+    	$(document).ready(function(){
+    		var socket = io.connect();
+            socket.on("server_responce", function(data) {
+                console.log('The server said ' + data.responce)
+            })
+            $('#epic').click((event) => {
+                socket.emit("epic_button")
+            })
+            socket.on("result_epic_button", (data) => {
+                console.log(data)
+                $("#message").html(`<h1>The button has been pushed ${data} time(s)</h1>`)
+            })
+            $('#reset').click((event) => {
+                socket.emit("epic_reset")
+            })
+            socket.on("result_epic_reset", (data) => {
+                $("#message").html(`<h1>The button has been pushed ${data} time(s)</h1>`)
+            })
+    	})
+    </script>
+    <div id="message">
+
+    </div>
+    <p>Push the button to update the count!</p>
+    <button id="epic">Push the epic button</button>
+    <button id="reset">Reset</button>
+</body>
+</html>
