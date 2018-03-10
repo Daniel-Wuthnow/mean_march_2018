@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="message_block">
+        <div id="top">
+            
+        </div>
+        <div id="bottom">
+            
+        </div>
+    </div>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type ="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type ="text/javascript">
+    	$(document).ready((event) => {
+    		var socket = io.connect();
+            $('#button').click( (event) =>{
+                event.preventDefault();
+                var post_data = $('#good_form').serializeArray();
+                socket.emit( "posting_form", post_data);
+            });
+            socket.on("updated_message", (data) =>{
+                $("#top").html(`<p>You emit the following info to the server. Name: ${data.name}, Location: ${data.loc}, Favorite Language: ${data.language}, Comment: ${data.comment}</p>`);
+            })
+            socket.on("random_number", (data) => {
+                $("#bottom").html(`<p>Your lucky number emitted by the server is ${data}.</p>`)
+            })
+    	})
+    </script>
+    <form id="good_form">
+        <label>Name:</label>
+        <input type="text" name="name">
+        <br>
+        <label>Dojo Location:</label>
+        <select name="loc">
+            <option value="dallas">Dallas</option>
+            <option value="seattle">Seattle</option>
+            <option value="tulsa">Tulsa</option>
+        </select>
+        <br>
+        <label>Favorite Language:</label>
+        <select name="language">
+            <option value="python">Python</option>
+            <option value="ruby">Ruby</option>
+            <option value="java">Java</option>
+        </select>
+        <br>
+        <label>Comment:</label>
+        <input type="textarea" name="comment">
+        <br>
+        <button id="button">Submit</button>
+    </form>
+</body>
+</html>
