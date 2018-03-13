@@ -25,15 +25,4 @@ io.sockets.on('connection', function (socket) {
   console.log("Client/socket id is: ", socket.id);
   // all the server socket code goes in here
   socket.emit("server_responce", {responce: "sockets are awesome!"})
-  socket.on("epic_button", (data) => {
-  	if(!session.click) {
-  		session.click = 0;
-  	}
-  	session.click += 1;
-  	io.emit("result_epic_button", session.click)
-  });
-  socket.on("epic_reset", (data) => {
-  	session.click = 0;
-  	io.emit("result_epic_reset", session.click)
-  })
 })
