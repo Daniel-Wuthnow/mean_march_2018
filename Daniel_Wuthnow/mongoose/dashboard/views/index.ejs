@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Welcome Cats!</h1>
+	
+<a href="/cats/new">New Cat</a>
+	<% for (var x = 0; x < cats.length; x++ ){ %>
+		<h3><a href="/cats/<%= cats[x].id %>"><%= cats[x].name %></a></h3>
+	<% } %>
+</body>
+</html>

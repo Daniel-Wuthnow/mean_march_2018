@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<a href="/">Dashboard</a>
+<h1>Profile</h1>
+<%= cat.name %>
+<a href="/cats/edit/<%= cat.id %>">Edit Profile</a>
+<form action="/cats/destroy/<%= cat.id %>" method="post">
+		<button type="submit">Remove Cat</button>
+	</form>
+</body>
+</html>
