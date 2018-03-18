@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<% if(typeof(errors) != 'undefined' ) { %>
+	    <% for (var error in errors) { %>
+	    	<h3>Error:</h3>
+	    	<h3><%= errors[error].message %></h3>
+	    <% } %>
+	<% } %>
+
+	<h1>Register</h1>
+	<form action="/register" method="post">
+		<label>First Name</label>
+		<input type="text" name="first_name">
+		<label>Last Name</label>
+		<input type="text" name="last_name">
+		<label>Email</label>
+		<input type="text" name="email">
+		<label>Birthday</label>
+		<input type="date" name="bday">
+		<label>Password</label>
+		<input type="Password" name="password">
+		<label>Password Confirmation</label>
+		<input type="password" name="password_confirm">
+		<button type="submit">Register</button>
+	</form>
+	<h1>Login</h1>
+	<form action="/login" method="post">
+		<label>Email</label>
+		<input type="text" name="email">
+		<label>Password</label>
+		<input type="password" name="password">
+		<button type="submit">Login</button>
+	</form>
+</body>
+</html>
