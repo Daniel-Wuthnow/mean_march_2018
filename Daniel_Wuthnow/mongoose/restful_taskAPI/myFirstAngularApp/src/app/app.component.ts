@@ -10,20 +10,30 @@ import { HttpService } from './http.service';
 export class AppComponent implements OnInit {
   title = 'Restful Tasks API';
   tasks = [];
+  tasksToggle = true;
 
   constructor(private _httpService: HttpService){
   }
 
   ngOnInit(){
-  	this.getTasksFromService()
   }
+
   getTasksFromService(){
   	let observable = this._httpService.getTasks()
   	observable.subscribe(data => {
+  		if(this.tasksToggle){
   		console.log("got our data", data)
   		this.tasks = data['data'];
-  		console.log(this.tasks)
+  		this.tasksToggle = false;
+  		} else {
+  			this.tasks = [];
+  			this.tasksToggle = true;
+  		}
   	})
+  }
+
+  onButtonClick(event) {
+  	console.log("click event is working", event)
   }
 
 
