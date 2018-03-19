@@ -9,6 +9,9 @@ mongoose.Promise = global.Promise;
 app.use(body_parser.json());
 app.use(body_parser.urlencoded({extended:true}));
 
+app.use(express.static( __dirname + '/myFirstAngularApp/dist' ));
+
+
 let Schema = mongoose.Schema;
 let TaskSchema = new mongoose.Schema({
 	title: {type: String, required: true},
