@@ -3,7 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/basic_mongoose');
 
-var CatSchema = new mongoose.Schema({
+var CatSchema = new mongoose.Schema({ 
 	name: { type: String, required: true}},
 	{timestamps: true})
 mongoose.model("Cat", CatSchema);

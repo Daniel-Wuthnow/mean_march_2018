@@ -25,16 +25,16 @@ let Task = mongoose.model("Task")
 
 
 
-app.get('/', (req, res) => {
+app.get('/tasks', (req, res) => {
 	Task.find({}, (err, task) => {
 		if (err) {
-			res.json({message: "error", error: err})
+			res.json({message: "task error", error: err})
 		} else {
 			res.json({message: "success", data: task});
 		}
 	});
 });
-app.get('/:id', (req, res) => {
+app.get('/tasks/:id', (req, res) => {
 	let task = Task.findOne({_id: req.params.id}, (err, task) => {
 		if (err) {
 			res.json({message: "error", error: err})
