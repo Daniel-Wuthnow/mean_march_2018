@@ -1,0 +1,36 @@
+<form
+	(submit)="onSubmit()"
+>
+	<h3>New Task</h3>
+	{{ task | json}}
+	<br>
+	<br>
+	<label>Title</label>
+	<input
+	 name="title"
+	 type="text"
+	 required
+	 minlength="2"
+	 maxlength="30"
+	 [(ngModel)]="task.title"
+	 #title="ngModel"
+	 />
+	 <label>Description</label>
+	 <input 
+	 name="description"
+	 type="text" 
+	 required
+	 minlength="2"
+	 maxlength="70"
+	 [(ngModel)]="task.description"
+	 #description="ngModel"
+	 />
+
+	 <button
+
+	 >
+	 	Create
+	 </button>
+
+
+</form>

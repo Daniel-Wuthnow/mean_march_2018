@@ -1,0 +1,31 @@
+<h1>All the Tasks:</h1>
+  <button (click)="getTasksFromService($event)"><h2>Click me!</h2></button>
+  <ul *ngFor="let task of tasks">
+    <li>{{task.title}}</li>
+    <li><p>{{task._id}}</p></li>
+    <button (click)="editTask(task)">Edit</button>
+    <button (click)="deleteTask(task._id)">Delete</button>
+  </ul>
+  <div *ngIf="editToggle">
+  	<h3>Edit a task</h3>
+  	<form>
+  		<label>Title</label>
+  		<input
+  		type="text"
+  		name="title"
+  		[(ngModel)]="thistask.title"
+  		required
+	 	minlength="2"
+	 	maxlength="30">
+  		<label>Description</label>
+  		<input 
+  		type="text" 
+  		name="description"
+		
+		[(ngModel)] = "thistask.description"
+		required
+		minlength="2"
+	 	maxlength="30">
+	 	<button (click)="submitEdit()">Edit</button>
+  	</form>
+  </div>
