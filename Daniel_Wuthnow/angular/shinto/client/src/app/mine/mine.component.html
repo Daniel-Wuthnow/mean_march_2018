@@ -1,0 +1,12 @@
+<h1>Mine ShintoCoins</h1>
+<h4>Here you can mine ShintoCoins by being able to solve the algorithm:</h4>
+<form (submit)="mineCoin($event)">
+	<label>What is the 7th Fibonacci sequence number?</label>
+	<input
+	type="text"
+	name="awnsers"
+	required
+	[(ngModel)]="awnsers"
+	/>
+	<button type="submit">Mine</button>
+</form>
