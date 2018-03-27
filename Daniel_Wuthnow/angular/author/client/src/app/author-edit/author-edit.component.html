@@ -1,0 +1,12 @@
+<a [routerLink]="['/']">Home</a>
+<p>Edit this Author:</p>
+<form (submit)="editSubmit($event)">
+	<label>Name:</label>
+	<input
+	type="text"
+	name="name"
+	required
+	[(ngModel)]="author.name"
+	/>
+	<button>Edit</button>
+</form>
